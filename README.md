@@ -18,11 +18,11 @@ mvn exec:exec
 
 #Results on an i7-920
 ``` 
-Serializer:  GeoTools Simple Feature  [Deserialize: 11376.83 msec][Serialize: 11531.63 msec]
-Serializer:                  JTS WKT  [Deserialize:  7240.80 msec][Serialize:  8215.21 msec]
-Serializer:                  JTS WKB  [Deserialize:   256.66 msec][Serialize:   217.36 msec]
-Serializer:             Thrift + WKB  [Deserialize:   291.97 msec][Serialize:   242.02 msec]
+Serializer:  GeoTools Simple Feature  [Serialize: 11376.83 msec][Deserialize: 11531.63 msec]
+Serializer:                  JTS WKT  [Serialize:  7369.06 msec][Deserialize:  8460.18 msec]
+Serializer:                  JTS WKB  [Serialize:   252.66 msec][Deserialize:   198.91 msec]
+Serializer:             Thrift + WKB  [Serialize:   296.23 msec][Deserialize:   231.27 msec]
 ```
 
-#ToDo
-Add in tests for serializing attributes with geometry
+#Note
+GeoTools Simple Feature and Thrift + WKB tests serialize all attributes  - the JTS tests just serialize geometries
