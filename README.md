@@ -7,6 +7,8 @@ Uses shapefile from: http://www.nws.noaa.gov/geodata/catalog/county/html/county.
 
 (specifically http://www.nws.noaa.gov/geodata/catalog/county/data/c_03de13.zip )
 
+Shapefile has ~31k features in it.
+
 #To Run
 Download shape file, unzip it somewhere, and edit the main method in App.java to point to the shape file.  Then
 
