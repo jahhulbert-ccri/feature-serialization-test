@@ -6,6 +6,12 @@ Test of various geometry serialization methods
 Uses shapefile from: http://www.nws.noaa.gov/geodata/catalog/county/html/county.htm
 (specifically http://www.nws.noaa.gov/geodata/catalog/county/data/c_03de13.zip )
 
+#To Run
+```
+mvn clean compile
+mvn exec:exec
+```
+
 
 #Results on an i7-920
 ``` 
