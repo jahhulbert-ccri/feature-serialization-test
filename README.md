@@ -20,10 +20,10 @@ mvn exec:exec
 
 #Results on an i7-920
 ``` 
-Serializer:  GeoTools Simple Feature  [Serialize: 11376.83 msec][Deserialize: 11531.63 msec]
-Serializer:                  JTS WKT  [Serialize:  7369.06 msec][Deserialize:  8460.18 msec]
-Serializer:                  JTS WKB  [Serialize:   252.66 msec][Deserialize:   198.91 msec]
-Serializer:             Thrift + WKB  [Serialize:   296.23 msec][Deserialize:   231.27 msec]
+Serializer:  GeoTools Simple Feature  [Serialize: 11864.52 msec][Deserialize: 12044.95 msec]
+Serializer:                  JTS WKT  [Serialize:  7403.86 msec][Deserialize:  8394.77 msec]
+Serializer:                  JTS WKB  [Serialize:   291.33 msec][Deserialize:   200.09 msec]
+Serializer:             Thrift + WKB  [Serialize:   334.04 msec][Deserialize:   247.26 msec]
 ```
 
 #Note
