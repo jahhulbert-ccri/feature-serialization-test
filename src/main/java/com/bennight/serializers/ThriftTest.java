@@ -49,7 +49,7 @@ public class ThriftTest extends AbstractSerializer {
 						attributes.put(ad.getName().toString(), f.getAttribute(ad.getName()).toString());
 					}
 				}
-	
+				tf.setAttributes(attributes);
 				serializedData.add(serializer.serialize(tf));
 			}
 		}
