@@ -4,9 +4,12 @@ feature-serialization-test
 Test of various geometry serialization methods
 
 Uses shapefile from: http://www.nws.noaa.gov/geodata/catalog/county/html/county.htm
+
 (specifically http://www.nws.noaa.gov/geodata/catalog/county/data/c_03de13.zip )
 
 #To Run
+Download shape file, unzip it somewhere, and edit the main method in App.java to point to the shape file.  Then
+
 ```
 mvn clean compile
 mvn exec:exec
