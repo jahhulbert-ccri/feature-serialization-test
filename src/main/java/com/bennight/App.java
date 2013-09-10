@@ -32,6 +32,7 @@ public class App
 			System.exit(1);
 		}
     	//Warm up JIT
+		
         for (SerializerInterface sft : interfaces)
         {
 	        try {
@@ -46,7 +47,7 @@ public class App
 	        try {
 	        	System.gc();
 				double[] vals = sft.GetSerializationPerformance(features);
-				System.out.println(String.format("Serializer: %s  [Deserialize: %s msec][Serialize: %s msec]", 
+				System.out.println(String.format("Serializer: %s  [Serialize: %s msec][Deserialize: %s msec]", 
 						pad(sft.GetSerializerName(),"                        "), 
 						pad(String.format("%.2f", vals[0] / 1000000f),"        "),  
 						pad(String.format("%.2f", vals[1] / 1000000f),"        ")));

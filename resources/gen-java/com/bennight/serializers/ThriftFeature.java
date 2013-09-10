@@ -163,7 +163,7 @@ public class ThriftFeature implements org.apache.thrift.TBase<ThriftFeature, Thr
     return new ThriftFeature(this);
   }
 
-  
+  @Override
   public void clear() {
     this.geometry = null;
     this.id = null;
@@ -372,7 +372,7 @@ public class ThriftFeature implements org.apache.thrift.TBase<ThriftFeature, Thr
     return 0;
   }
 
-  
+  @Override
   public int compareTo(ThriftFeature other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
@@ -594,7 +594,7 @@ public class ThriftFeature implements org.apache.thrift.TBase<ThriftFeature, Thr
 
   private static class ThriftFeatureTupleScheme extends TupleScheme<ThriftFeature> {
 
-    
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, ThriftFeature struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       oprot.writeBinary(struct.geometry);
@@ -616,7 +616,7 @@ public class ThriftFeature implements org.apache.thrift.TBase<ThriftFeature, Thr
       }
     }
 
-    
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, ThriftFeature struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       struct.geometry = iprot.readBinary();
