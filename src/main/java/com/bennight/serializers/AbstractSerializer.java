@@ -1,36 +1,35 @@
 package com.bennight.serializers;
 
-import java.io.File;
+import org.opengis.feature.simple.SimpleFeature;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.opengis.feature.simple.SimpleFeature;
-
-import com.bennight.ShapefileReader;
-
 public abstract class AbstractSerializer implements SerializerInterface {
 
-	public AbstractSerializer(){
-		
-	}
+    public static final int NUM_ITERATIONS = 25;
 
-	protected abstract List<byte[]> Serialize(List<SimpleFeature> features);
-	protected abstract void Deserialize(List<byte[]> serializedData);
+	protected abstract List<byte[]> serialize(List<SimpleFeature> features);
 
-	public double[] GetSerializationPerformance(List<SimpleFeature> features) throws IOException{
+	protected abstract void deserialize(List<byte[]> serializedData);
+
+    @Override
+	public double[] getPerformance(List<SimpleFeature> features) throws IOException{
 		
 		long start = System.nanoTime();
-		List<byte[]> serializedData = Serialize(features);
+        List<byte[]> serializedData = null;
+        for(int i=0; i < NUM_ITERATIONS; i++) {
+            serializedData = serialize(features);
+        }
 		long serializeTime = System.nanoTime() - start;
 		
 		start = System.nanoTime();
-		Deserialize(serializedData);
+        for(int i=0; i < NUM_ITERATIONS; i ++) {
+            deserialize(serializedData);
+        }
 		long deserializeTime = System.nanoTime() - start;
 		
 		return new double[] {serializeTime, deserializeTime};
-		
-		
 	}
-	
 
 }

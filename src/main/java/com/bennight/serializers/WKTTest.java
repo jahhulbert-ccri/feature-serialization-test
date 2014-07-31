@@ -1,19 +1,13 @@
 package com.bennight.serializers;
 
-import java.io.File;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.io.WKTReader;
+import com.vividsolutions.jts.io.WKTWriter;
+import org.opengis.feature.simple.SimpleFeature;
+
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.geotools.data.DataUtilities;
-import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.feature.simple.SimpleFeatureType;
-
-import com.bennight.ShapefileReader;
-import com.vividsolutions.jts.io.ParseException;
-import com.vividsolutions.jts.io.WKTReader;
-import com.vividsolutions.jts.io.WKTWriter;
-import com.vividsolutions.jts.geom.Geometry;
 
 public class WKTTest extends AbstractSerializer {
 
@@ -22,7 +16,7 @@ public class WKTTest extends AbstractSerializer {
 	
 	
 	@Override
-	public List<byte[]> Serialize(List<SimpleFeature> features) {
+	public List<byte[]> serialize(List<SimpleFeature> features) {
 		
 		StringBuilder sb = new StringBuilder();
 		for (SimpleFeature f : features){
@@ -36,7 +30,7 @@ public class WKTTest extends AbstractSerializer {
 	}
 
 	@Override
-	public void Deserialize(List<byte[]> serializedData) {
+	public void deserialize(List<byte[]> serializedData) {
 		
 		try {
 			List<Geometry> features = new ArrayList<Geometry>();
@@ -52,7 +46,8 @@ public class WKTTest extends AbstractSerializer {
 		}
 	}
 
-	public String GetSerializerName() {
+    @Override
+	public String getName() {
 		return "JTS WKT";
 	}
 

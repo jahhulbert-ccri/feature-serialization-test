@@ -24,7 +24,7 @@ public class WKBTest extends AbstractSerializer {
 	
 	
 	@Override
-	public List<byte[]> Serialize(List<SimpleFeature> features) {
+	public List<byte[]> serialize(List<SimpleFeature> features) {
 		
 		List<byte[]> serializedData = new ArrayList<byte[]>();
 		for (SimpleFeature f : features){
@@ -34,7 +34,7 @@ public class WKBTest extends AbstractSerializer {
 	}
 
 	@Override
-	public void Deserialize(List<byte[]> serializedData) {
+	public void deserialize(List<byte[]> serializedData) {
 		
 		try {
 			List<Geometry> features = new ArrayList<Geometry>();
@@ -50,7 +50,8 @@ public class WKBTest extends AbstractSerializer {
 		}
 	}
 
-	public String GetSerializerName() {
+    @Override
+	public String getName() {
 		return "JTS WKB";
 	}
 

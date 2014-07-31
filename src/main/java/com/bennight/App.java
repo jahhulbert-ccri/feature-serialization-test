@@ -1,16 +1,14 @@
 package com.bennight;
 
+import com.bennight.serializers.AvroSimpleFeatureTest;
+import com.bennight.serializers.SerializerInterface;
+import com.bennight.serializers.ThriftTest;
+import geomesa.feature.AvroSimpleFeatureFactory;
+import org.opengis.feature.simple.SimpleFeature;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
-import org.opengis.feature.simple.SimpleFeature;
-
-import com.bennight.serializers.SerializerInterface;
-import com.bennight.serializers.SimpleFeatureTest;
-import com.bennight.serializers.ThriftTest;
-import com.bennight.serializers.WKBTest;
-import com.bennight.serializers.WKTTest;
 
 /**
  * Hello world!
@@ -20,11 +18,11 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String shapefile = "d:/tempshape/c_03de13.shp";
-    	
-    	SerializerInterface[] interfaces = new SerializerInterface[] {new SimpleFeatureTest(), new WKTTest(), new WKBTest(),new ThriftTest()};
-    	
-    	List<SimpleFeature> features = null;
+    	String shapefile = "/home/ahulbert/Desktop/c_04jn14c/c_04jn14.shp";
+
+        AvroSimpleFeatureFactory.init();
+
+        List<SimpleFeature> features = null;
 		try {
 			features = ShapefileReader.ReadShapefile(new File(shapefile));
 		} catch (IOException e1) {
@@ -32,11 +30,19 @@ public class App
 			System.exit(1);
 		}
     	//Warm up JIT
-		
+        SerializerInterface[] interfaces = new SerializerInterface[] {
+               // new SimpleFeatureTest(),
+                //new WKTTest(),
+                //new WKBTest(),
+                new ThriftTest(),
+                new AvroSimpleFeatureTest(features.get(0).getFeatureType())
+        };
+
+        //Warm up JIT
         for (SerializerInterface sft : interfaces)
         {
 	        try {
-				double[] vals = sft.GetSerializationPerformance(features);
+				sft.getPerformance(features);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -46,9 +52,9 @@ public class App
         {
 	        try {
 	        	System.gc();
-				double[] vals = sft.GetSerializationPerformance(features);
-				System.out.println(String.format("Serializer: %s  [Serialize: %s msec][Deserialize: %s msec]", 
-						pad(sft.GetSerializerName(),"                        "), 
+				double[] vals = sft.getPerformance(features);
+				System.out.println(String.format("Serializer: %s  [serialize: %s msec][deserialize: %s msec]",
+						pad(sft.getName(),"                        "),
 						pad(String.format("%.2f", vals[0] / 1000000f),"        "),  
 						pad(String.format("%.2f", vals[1] / 1000000f),"        ")));
 			} catch (IOException e) {

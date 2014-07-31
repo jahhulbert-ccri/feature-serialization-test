@@ -32,7 +32,7 @@ public class ThriftTest extends AbstractSerializer {
 	private TDeserializer deserializer = new TDeserializer(new TBinaryProtocol.Factory());
 		
 	@Override
-	public List<byte[]> Serialize(List<SimpleFeature> features) {
+	public List<byte[]> serialize(List<SimpleFeature> features) {
 		
 		List<byte[]> serializedData = new ArrayList<byte[]>();
 		try {
@@ -61,7 +61,7 @@ public class ThriftTest extends AbstractSerializer {
 	}
 
 	@Override
-	public void Deserialize(List<byte[]> serializedData) {
+	public void deserialize(List<byte[]> serializedData) {
 		
 		try {
 			List<ThriftFeature> features = new ArrayList<ThriftFeature>();
@@ -80,7 +80,8 @@ public class ThriftTest extends AbstractSerializer {
 		}
 	}
 
-	public String GetSerializerName() {
+    @Override
+	public String getName() {
 		return "Thrift + WKB";
 	}
 

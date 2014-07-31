@@ -13,10 +13,8 @@ import com.bennight.ShapefileReader;
 
 public class SimpleFeatureTest extends AbstractSerializer {
 
-
-	
 	@Override
-	public List<byte[]> Serialize(List<SimpleFeature> features) {
+	public List<byte[]> serialize(List<SimpleFeature> features) {
 		
 		StringBuilder sb = new StringBuilder();
 		for (SimpleFeature f : features){
@@ -32,7 +30,7 @@ public class SimpleFeatureTest extends AbstractSerializer {
 	}
 
 	@Override
-	public void Deserialize(List<byte[]> serializedData) {
+	public void deserialize(List<byte[]> serializedData) {
 		
 		List<SimpleFeature> features = new ArrayList<SimpleFeature>();
 		for (String line : (new String(serializedData.get(0), StandardCharsets.UTF_8).split("\r\n"))){
@@ -41,7 +39,8 @@ public class SimpleFeatureTest extends AbstractSerializer {
 		//System.out.println(features.size());
 	}
 
-	public String GetSerializerName() {
+    @Override
+	public String getName() {
 		return "GeoTools Simple Feature";
 	}
 
