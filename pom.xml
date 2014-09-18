@@ -11,7 +11,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<geotools.version>11.1</geotools.version>
+		<geotools.version>11.2</geotools.version>
 	</properties>
 
 	<build>
@@ -47,29 +47,32 @@
 						<classpath />
 						<argument>-Xmx4g</argument>
 						<argument>com.bennight.App</argument>
+                        <argument>/home/hulbert/dev/shapefile/c_04jn14.shp</argument>
 					</arguments>
 				</configuration>
 			</plugin>
-
 		</plugins>
-
 	</build>
-
-
-
 
 	<repositories>
 		<repository>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-			<id>opengeo</id>
+			<id>osgeo-geotools</id>
 			<name>OpenGeo Maven Repository</name>
-			<url>http://repo.opengeo.org</url>
+			<url>http://download.osgeo.org/webdav/geotools</url>
 		</repository>
+
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>bl</id>
+            <name>boundless</name>
+            <url>http://repo.boundlessgeo.com/main/</url>
+        </repository>
 	</repositories>
-
-
 
 	<dependencies>
 		<dependency>
@@ -104,12 +107,12 @@
 			<version>1.6.0</version>
 		</dependency>
         <dependency>
-            <groupId>geomesa</groupId>
+            <groupId>org.locationtech.geomesa</groupId>
             <version>1.0.0-SNAPSHOT</version>
             <artifactId>geomesa-feature-accumulo1.5</artifactId>
         </dependency>
         <dependency>
-            <groupId>geomesa</groupId>
+            <groupId>org.locationtech.geomesa</groupId>
             <version>1.0.0-SNAPSHOT</version>
             <artifactId>geomesa-utils-accumulo1.5</artifactId>
         </dependency>
@@ -121,9 +124,8 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>11.0.1</version>
+            <version>11.0.2</version>
         </dependency>
-
 	</dependencies>
 
 </project>

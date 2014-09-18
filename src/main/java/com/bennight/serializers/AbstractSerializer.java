@@ -9,7 +9,7 @@ public abstract class AbstractSerializer implements SerializerInterface {
 
     public static final int NUM_ITERATIONS = 25;
 
-	protected abstract List<byte[]> serialize(List<SimpleFeature> features);
+	protected abstract List<byte[]> serialize(List<SimpleFeature> features) throws IOException;
 
 	protected abstract void deserialize(List<byte[]> serializedData);
 

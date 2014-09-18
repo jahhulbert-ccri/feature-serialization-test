@@ -3,7 +3,7 @@ package com.bennight;
 import com.bennight.serializers.AvroSimpleFeatureTest;
 import com.bennight.serializers.SerializerInterface;
 import com.bennight.serializers.ThriftTest;
-import geomesa.feature.AvroSimpleFeatureFactory;
+import org.locationtech.geomesa.feature.AvroSimpleFeatureFactory;
 import org.opengis.feature.simple.SimpleFeature;
 
 import java.io.File;
@@ -18,7 +18,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String shapefile = "/home/ahulbert/Desktop/c_04jn14c/c_04jn14.shp";
+    	String shapefile = args[0];
 
         AvroSimpleFeatureFactory.init();
 
